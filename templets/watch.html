@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Up | Choices</title>
+    <title>Next Up | Watch Movie</title>
 
     <!-- Bootstrap stylesheet  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -23,58 +23,42 @@
 
     <!-- Header -->
     <nav class="navbar">
-        <a href="#" class="left">
+        <a href="/recommendations" class="left">
             <img src="../static/images/logo.png" alt="">
         </a>
+        <div class="right-container">
+            <select id="movieSelect" class="select2 form-control" onchange="movieSelect()" style="width: 220px;">
+                <option disabled hidden selected value="sm" id="search-movie">Search Movie</option>
+                {% for item in movie_names %}
+                <option value={{item}}>{{item}}</option>
+                {% endfor %}
+            </select>
+            <i class="fa fa-search"></i>
+            <a href="/logout" data-toggle="tooltip" title="Logout">
+                <img src="https://www.hotstar.com/assets/c724e71754181298e3f835e46ade0517.svg" alt="User logout" width="30px">
+            </a>
+        </div>
     </nav>
 
-    <!-- Select Section -->
-    <div class="container">
-        <form action="/recommendations" method="POST" id="choice-form">
-            <div class="select-heading">
-                <h2>Select your top 3 Genres</h2>
-            </div>
-            <div class="row">
-                <ul class="select-list">
-                    {% for i in genre_names %}
-                    <div class="col">
-                        <li>
-                            <label>
-                            <input type="checkbox" class="genre-checkbox" name="genre-checkbox" value={{"-".join(i.split())}}>
-                            <div class="select-box">
-                                <p class="select-name" style="-webkit-line-clamp: 1;"> {{i}} </p>
-                            </div>
-                            </label>
-                        </li>
-                    </div>
-                    {% endfor %}
-                </ul>
-            </div>
 
-            <div class="select-heading">
-                <h2>Select your top 5 Cast</h2>
+    <!-- Watch Movie Section -->
+    <div class="container-fluid">
+        <div class="row watch-name">
+            <h3>{{movie_name}}</h3>
+        </div>
+        <div class="row movie-box watch-box">
+            <div class="col-12 movie-vid">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/OlMKPpy0Z-I?start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <div class="row">
-                <ul class="select-list">
-                    {% for i in cast_names %}
-                    <div class="col">
-                        <li>
-                            <label>
-                            <input type="checkbox" class="cast-checkbox" name="cast-checkbox" value={{"-".join(i.split())}}>
-                            <div class="select-box">
-                                <p class="select-name" style="-webkit-line-clamp: 2;">{{i}}</p>
-                            </div>
-                            </label>
-                        </li>
-                    </div>
-                    {% endfor %}
-                </ul>
-            </div>
-            <button id="choice-btn" type="submit" class="select-submit">Done </button>
-        </form>
+        </div>
     </div>
 
-    
+    <!-- Footer -->
+    <div class="container-fluid footer">
+        <!-- <h6 class="text-center"> &#169; 2022 NextUp - Designed and Developed for Microsoft Intern Engage </h6> -->
+        <h6 class="text-center"> &#169; 2024 NextUp - Designed and Developed by Arpit Srivastava </h6>
+    </div>
+
 
 
     <!-- JS/jQuery files  -->
